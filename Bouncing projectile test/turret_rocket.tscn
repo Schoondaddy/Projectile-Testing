@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3lrt08md0o0k"]
+
+[ext_resource type="Script" path="res://turret_rocket.gd" id="1_j5100"]
+
+[sub_resource type="Curve" id="Curve_vl23k"]
+min_value = 1.0
+max_value = 3.0
+_data = [Vector2(0, 3), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_eaekx"]
+offsets = PackedFloat32Array(0.02, 0.166667, 0.326667, 0.533333, 0.686667)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0.392157, 0, 1, 1, 0, 0, 1, 0.396078, 0.415686, 0.941176, 1, 0, 0, 1, 1)
+metadata/_snap_count = 2
+
+[node name="turret_rocket" type="CharacterBody2D"]
+scale = Vector2(3, 3)
+script = ExtResource("1_j5100")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(-1, 0)
+rotation = 1.5708
+polygon = PackedVector2Array(-2, 9, -2, -4, 0, -17, 2, -4, 2, 3.09055, 2, 9)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+rotation = 1.57355
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = -2.00824
+offset_top = -2.99449
+offset_right = 1.99176
+offset_bottom = 10.0055
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = -0.0439861
+offset_top = -15.9999
+offset_right = 0.456014
+offset_bottom = -2.99994
+rotation = -0.156927
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_left = -0.043986
+offset_top = -15.9999
+offset_right = 0.456014
+offset_bottom = -2.99994
+rotation = 0.148802
+metadata/_edit_use_anchors_ = true
+
+[node name="ExplosionParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 300
+one_shot = true
+speed_scale = 0.5
+explosiveness = 0.9
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_curve = SubResource("Curve_vl23k")
+color_ramp = SubResource("Gradient_eaekx")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
