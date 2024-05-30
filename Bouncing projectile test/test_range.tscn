@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://crraiqaqv216u"]
 
-[ext_resource type="PackedScene" uid="uid://co5trwkqu3pxs" path="res://turret.tscn" id="1_lwveh"]
+[ext_resource type="PackedScene" uid="uid://co5trwkqu3pxs" path="res://gun.tscn" id="1_lwveh"]
 [ext_resource type="Texture2D" uid="uid://jbxhsuv55lab" path="res://icon.svg" id="2_83fl0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ncr3"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxukqdb2fwkoi"]
+
+[ext_resource type="PackedScene" uid="uid://n6cd8re0bo68" path="res://pathfinding_enemy.tscn" id="1_3gf3f"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_cp2j1"]
+vertices = PackedVector2Array(696, 58, 694, 510, 632, 438, 632, 136, 237, 510, 286, 436, 237, 58, 286, 136)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 1, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(6, 0, 3, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(296, 146, 455, 146, 622, 146, 622, 428, 296, 426), PackedVector2Array(227, 48, 227, 520, 704, 520, 701, 48)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="PathfinderPlace" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(142, 252)
+navigation_polygon = SubResource("NavigationPolygon_cp2j1")
+
+[node name="PathfindingEnemy" parent="." instance=ExtResource("1_3gf3f")]
+position = Vector2(136, 14)

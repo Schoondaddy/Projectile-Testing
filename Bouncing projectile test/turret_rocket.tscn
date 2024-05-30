@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3lrt08md0o0k"]
+[gd_scene load_steps=6 format=3 uid="uid://d3lrt08md0o0k"]
 
 [ext_resource type="Script" path="res://turret_rocket.gd" id="1_j5100"]
 
@@ -9,9 +9,18 @@ _data = [Vector2(0, 3), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_eaekx"]
-offsets = PackedFloat32Array(0.02, 0.166667, 0.326667, 0.533333, 0.686667)
-colors = PackedColorArray(1, 1, 0, 1, 1, 0.392157, 0, 1, 1, 0, 0, 1, 0.396078, 0.415686, 0.941176, 1, 0, 0, 1, 1)
+offsets = PackedFloat32Array(0.02, 0.166667, 0.326667, 0.666667)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0.392157, 0, 1, 1, 0, 0, 1, 0.197937, 0.197937, 0.197937, 1)
 metadata/_snap_count = 2
+
+[sub_resource type="Curve" id="Curve_qgey3"]
+max_value = 5.0
+_data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_c553x"]
+offsets = PackedFloat32Array(0, 0.793333, 1)
+colors = PackedColorArray(0.154876, 0.154876, 0.154876, 1, 0.412152, 0.412152, 0.412152, 1, 1, 1, 1, 1)
 
 [node name="turret_rocket" type="CharacterBody2D"]
 scale = Vector2(3, 3)
@@ -60,15 +69,33 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ExplosionParticles" type="CPUParticles2D" parent="."]
 emitting = false
-amount = 300
+amount = 3000
+lifetime = 0.5
 one_shot = true
-speed_scale = 0.5
-explosiveness = 0.9
+explosiveness = 0.8
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 50.0
-initial_velocity_max = 100.0
+initial_velocity_max = 150.0
 scale_amount_curve = SubResource("Curve_vl23k")
 color_ramp = SubResource("Gradient_eaekx")
+
+[node name="SmokeParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 300
+one_shot = true
+speed_scale = 3.0
+explosiveness = 0.5
+emission_shape = 1
+emission_sphere_radius = 50.0
+direction = Vector2(0, -1)
+spread = 160.0
+gravity = Vector2(0, -100)
+initial_velocity_min = 10.0
+initial_velocity_max = 20.0
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+scale_amount_curve = SubResource("Curve_qgey3")
+color_ramp = SubResource("Gradient_c553x")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
