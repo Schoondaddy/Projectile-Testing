@@ -19,7 +19,6 @@ func _ready():
 
 
 func _physics_process(delta):
-	print(SPEED)
 	if accelerating:
 		SPEED = lerp(SPEED, MAX_SPEED, rocket_acceleration)
 	var forward_global_x = transform[0]

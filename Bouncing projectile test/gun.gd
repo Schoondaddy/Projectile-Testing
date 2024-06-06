@@ -14,7 +14,6 @@ func _ready():
 
 
 func _process(delta):
-	print(global_position)
 	look_at(get_global_mouse_position())
 
 func shoot_handler():
