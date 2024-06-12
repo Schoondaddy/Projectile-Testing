@@ -4,7 +4,7 @@ const fire_cooldown = .5
 
 @onready var BulletSpawn = $BulletSpawnPos
 
-var bulletPath = preload("res://turret_bullet.tscn")
+var bulletPath = preload("res://bouncing_bullet.tscn")
 var rocketPath = preload("res://turret_rocket.tscn")
 var can_fire : bool = true
 

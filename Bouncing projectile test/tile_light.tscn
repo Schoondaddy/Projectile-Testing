@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://0d3n0v6n8yer"]
+
+[sub_resource type="Gradient" id="Gradient_byw24"]
+offsets = PackedFloat32Array(0, 0.59)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_h5ysd"]
+gradient = SubResource("Gradient_byw24")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="TileLight" type="PointLight2D"]
+scale = Vector2(5, 5)
+texture = SubResource("GradientTexture2D_h5ysd")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxukqdb2fwkoi"]
+[gd_scene load_steps=8 format=3 uid="uid://cxukqdb2fwkoi"]
 
 [ext_resource type="Script" path="res://NavigationGenerator.gd" id="1_j0nv1"]
 [ext_resource type="Texture2D" uid="uid://jbxhsuv55lab" path="res://icon.svg" id="3_203kx"]
 [ext_resource type="PackedScene" uid="uid://c1337pd56g40j" path="res://player.tscn" id="3_b5bok"]
+[ext_resource type="PackedScene" uid="uid://n6cd8re0bo68" path="res://pathfinding_enemy.tscn" id="4_7gex3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mafef"]
 texture = ExtResource("3_203kx")
@@ -268,7 +269,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_mafef")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nuxm4"]
-size = Vector2(126, 128)
+size = Vector2(109, 101)
 
 [node name="PathfinderPlace" type="Node2D"]
 metadata/_edit_lock_ = true
@@ -286,5 +287,6 @@ layer_0/tile_data = PackedInt32Array(262149, 0, 0, 196613, 0, 0, 196612, 0, 0, 2
 [node name="Player" parent="." instance=ExtResource("3_b5bok")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-1, -1)
 shape = SubResource("RectangleShape2D_nuxm4")
+
+[node name="PathfindingEnemy" parent="." instance=ExtResource("4_7gex3")]

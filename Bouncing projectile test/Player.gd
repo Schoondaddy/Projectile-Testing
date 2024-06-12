@@ -6,7 +6,7 @@ const JUMP_VELOCITY = -400.0
 
 @onready var camera = $"Camera2D"
 @onready var healthbar_path = $"Camera2D/Health"
-@onready var gun = $"Gun"
+@onready var light_pivot = $"LightPivot"
 
 var health = 100.0
 
@@ -25,9 +25,7 @@ func _physics_process(delta):
 		velocity.x = Xdirection * SPEED
 		velocity.y = Ydirection * SPEED
 	
-	if Input.is_action_pressed("left_click"):
-		gun.shoot_handler()
-	
+	light_pivot.look_at(get_global_mouse_position())
 	
 	camera_offset(Xdirection, Ydirection)
 	move_and_slide()
@@ -46,3 +44,4 @@ func camera_offset(x, y):
 
 func die():
 	queue_free()
+

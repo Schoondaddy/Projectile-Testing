@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn6s3pcw6lncs"]
+
+[ext_resource type="Script" path="res://GravityBullet.gd" id="1_y0i5q"]
+[ext_resource type="Texture2D" uid="uid://davdhw73vebbc" path="res://Jimmy.png" id="2_cuaur"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yn0ts"]
+radius = 76.4199
+
+[node name="GravityBullet" type="CharacterBody2D"]
+script = ExtResource("1_y0i5q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_cuaur")
+
+[node name="GravityArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityArea"]
+shape = SubResource("CircleShape2D_yn0ts")
+
+[connection signal="body_entered" from="GravityArea" to="." method="_on_gravity_area_body_entered"]
+[connection signal="body_exited" from="GravityArea" to="." method="_on_gravity_area_body_exited"]

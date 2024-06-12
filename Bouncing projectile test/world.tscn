@@ -1,17 +1,53 @@
-[gd_scene load_steps=3 format=3 uid="uid://cj3qiugks4r0a"]
+[gd_scene load_steps=11 format=3 uid="uid://cj3qiugks4r0a"]
 
 [ext_resource type="PackedScene" uid="uid://c1337pd56g40j" path="res://player.tscn" id="1_0audx"]
+[ext_resource type="Texture2D" uid="uid://davdhw73vebbc" path="res://Jimmy.png" id="2_pu5xo"]
+[ext_resource type="Script" path="res://TileLight.gd" id="4_7jsm2"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_7rjii"]
-vertices = PackedVector2Array(128, -1, 454, -1, 409, 42, 234, 50, 454, 230, 377, 166, 128, 230, 217, 168)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 1, 4, 5), PackedInt32Array(5, 4, 6, 7), PackedInt32Array(7, 6, 0, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(118, -11, 464, -11, 464, 240, 118, 240), PackedVector2Array(243, 60, 229, 158, 369, 156, 396, 53)])
-source_geometry_group_name = &"navigation_polygon_source_group"
+[sub_resource type="Environment" id="Environment_0kwn4"]
+glow_enabled = true
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_41p2g"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_yffak"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hpd15"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_m28jo"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nsuf5"]
+texture = ExtResource("2_pu5xo")
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_41p2g")
+1:0/0 = 0
+1:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_hpd15")
+0:1/0 = 0
+0:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_yffak")
+1:1/0 = 0
+1:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_m28jo")
+
+[sub_resource type="TileSet" id="TileSet_skbt0"]
+occlusion_layer_0/light_mask = 1
+sources/1 = SubResource("TileSetAtlasSource_nsuf5")
 
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_0audx")]
-position = Vector2(412, 167)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_7rjii")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0kwn4")
+
+[node name="TileMap" type="TileMap" parent="."]
+light_mask = 1023
+scale = Vector2(1, 1.00721)
+tile_set = SubResource("TileSet_skbt0")
+format = 2
+layer_0/tile_data = PackedInt32Array(458759, 1, 0, 524295, 1, 0, 458760, 1, 0, 524296, 1, 0)
+script = ExtResource("4_7jsm2")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
