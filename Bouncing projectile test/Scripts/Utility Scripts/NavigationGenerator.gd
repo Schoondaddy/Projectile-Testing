@@ -36,8 +36,8 @@ func generate_polygon():
 			var tile_size = tile_set.tile_size
 			var polygon = tileMap.get_cell_tile_data(0, cell).get_collision_polygon_points(0,0) #Getting the shape of the tilemap tile
 			for i in polygon.size(): #Correcting size and position of polygon points
-				polygon[i].x = 0.0625 * polygon[i].x + 8 + cell.x * tile_size.x
-				polygon[i].y = 0.0625 * polygon[i].y + 8 + cell.y * tile_size.y
+				polygon[i].x = 0.0625 * polygon[i].x + .5 * tile_size.x + cell.x * tile_size.x
+				polygon[i].y = 0.0625 * polygon[i].y + .5 * tile_size.y + cell.y * tile_size.y
 			list_of_polygons.append(polygon) #Adding finished polygons to list of polygons
 	
 	for polygon in list_of_polygons:

@@ -4,7 +4,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const accel = 7
 
-var bulletPath = preload("res://gravity_bullet.tscn")
+var bulletPath = preload("res://Scenes/Spawnables/gravity_bullet.tscn")
 var can_fire = true
 
 @onready var Player = $"../Player"

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://n6cd8re0bo68"]
 
-[ext_resource type="Script" path="res://PathfindingEnemy.gd" id="1_vsgfu"]
-[ext_resource type="Texture2D" uid="uid://davdhw73vebbc" path="res://Jimmy.png" id="2_bhiir"]
+[ext_resource type="Script" path="res://Scripts/Character Scripts/PathfindingEnemy.gd" id="1_vsgfu"]
+[ext_resource type="Texture2D" uid="uid://davdhw73vebbc" path="res://Assets/Jimmy.png" id="2_bhiir"]
 
 [node name="PathfindingEnemy" type="CharacterBody2D"]
 script = ExtResource("1_vsgfu")

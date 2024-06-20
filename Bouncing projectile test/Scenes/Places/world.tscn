@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=3 uid="uid://cj3qiugks4r0a"]
+
+[ext_resource type="PackedScene" uid="uid://c1337pd56g40j" path="res://Scenes/Characters/player.tscn" id="1_x7mar"]
+[ext_resource type="Texture2D" uid="uid://davdhw73vebbc" path="res://Assets/Jimmy.png" id="2_ow38k"]
+[ext_resource type="Script" path="res://Scripts/Projectile and Spawnables Scripts/TileLight.gd" id="3_0t1pu"]
+[ext_resource type="Texture2D" uid="uid://jbxhsuv55lab" path="res://Assets/icon.svg" id="4_y6nbw"]
+
+[sub_resource type="Environment" id="Environment_0kwn4"]
+glow_enabled = true
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tjrih"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_yucpq"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_eefpm"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_p5svn"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nsuf5"]
+texture = ExtResource("2_ow38k")
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_tjrih")
+1:0/0 = 0
+1:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_eefpm")
+0:1/0 = 0
+0:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_yucpq")
+1:1/0 = 0
+1:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_p5svn")
+
+[sub_resource type="TileSet" id="TileSet_skbt0"]
+occlusion_layer_0/light_mask = 1
+sources/1 = SubResource("TileSetAtlasSource_nsuf5")
+
+[node name="World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_x7mar")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0kwn4")
+
+[node name="TileMap" type="TileMap" parent="."]
+light_mask = 1023
+tile_set = SubResource("TileSet_skbt0")
+format = 2
+layer_0/tile_data = PackedInt32Array(458759, 1, 0, 524295, 1, 1, 458760, 65537, 0, 524296, 65537, 1, 458761, 1, 0, 524297, 1, 1, 458762, 65537, 0, 524298, 65537, 1, 458763, 1, 0, 524299, 1, 1, 458764, 65537, 0, 524300, 65537, 1, 458765, 1, 0, 524301, 1, 1, 458766, 65537, 0, 524302, 65537, 1, 458767, 1, 0, 524303, 1, 1, 458768, 65537, 0, 524304, 65537, 1, 458769, 1, 0, 524305, 1, 1, 458770, 65537, 0, 524306, 65537, 1, 589831, 1, 0, 655367, 1, 1, 589832, 65537, 0, 655368, 65537, 1, 589833, 1, 0, 655369, 1, 1, 589834, 65537, 0, 655370, 65537, 1, 589835, 1, 0, 655371, 1, 1, 589836, 65537, 0, 655372, 65537, 1, 589837, 1, 0, 655373, 1, 1, 589838, 65537, 0, 655374, 65537, 1, 589839, 1, 0, 655375, 1, 1, 589840, 65537, 0, 655376, 65537, 1, 589841, 1, 0, 655377, 1, 1, 589842, 65537, 0, 655378, 65537, 1, 720903, 1, 0, 786439, 1, 1, 851975, 1, 0, 917511, 1, 1, 720904, 65537, 0, 786440, 65537, 1, 851976, 65537, 0, 917512, 65537, 1, 720905, 1, 0, 786441, 1, 1, 851977, 1, 0, 917513, 1, 1, 720906, 65537, 0, 786442, 65537, 1, 851978, 65537, 0, 917514, 65537, 1, 720907, 1, 0, 786443, 1, 1, 851979, 1, 0, 917515, 1, 1, 720908, 65537, 0, 786444, 65537, 1, 851980, 65537, 0, 917516, 65537, 1, 720909, 1, 0, 786445, 1, 1, 851981, 1, 0, 917517, 1, 1, 720910, 65537, 0, 786446, 65537, 1, 851982, 65537, 0, 917518, 65537, 1, 720911, 1, 0, 786447, 1, 1, 851983, 1, 0, 917519, 1, 1, 720912, 65537, 0, 786448, 65537, 1, 851984, 65537, 0, 917520, 65537, 1, 720913, 1, 0, 786449, 1, 1, 851985, 1, 0, 917521, 1, 1, 720914, 65537, 0, 786450, 65537, 1, 851986, 65537, 0, 917522, 65537, 1)
+script = ExtResource("3_0t1pu")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+top_level = true
+color = Color(0, 0, 0, 1)
+
+[node name="Icon" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(-1.00002, -3.99999)
+scale = Vector2(9, 5.0625)
+texture = ExtResource("4_y6nbw")

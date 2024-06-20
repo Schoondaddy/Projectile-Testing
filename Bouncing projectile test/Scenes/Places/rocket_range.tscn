@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bx862vt3h2qe1"]
 
-[ext_resource type="PackedScene" uid="uid://co5trwkqu3pxs" path="res://gun.tscn" id="1_otcbk"]
+[ext_resource type="PackedScene" uid="uid://co5trwkqu3pxs" path="res://Scenes/Spawnables/gun.tscn" id="1_otcbk"]
 
 [node name="rocket range" type="Node2D"]
 

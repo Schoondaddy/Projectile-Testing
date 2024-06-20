@@ -12,10 +12,12 @@ fill_from = Vector2(0.5, 0.5)
 [node name="TileLight" type="PointLight2D"]
 scale = Vector2(5, 5)
 energy = 0.0
+shadow_enabled = true
+shadow_item_cull_mask = 2
 texture = SubResource("GradientTexture2D_h5ysd")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -0.4
-offset_top = -0.6
-offset_right = 0.6
-offset_bottom = 0.4
+offset_left = -0.6
+offset_top = -0.799999
+offset_right = 1.4
+offset_bottom = 1.2
